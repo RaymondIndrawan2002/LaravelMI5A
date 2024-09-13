@@ -12,7 +12,13 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        //
+        //panggil model fakultas
+        $result = Fakultas::all();
+        // dd($result);
+
+        // kirim data $result views fakultas/index.blade.php
+        return view(view: 'fakultas.index')->with
+        (key: 'fakultas', value: $result);
     }
 
     /**
