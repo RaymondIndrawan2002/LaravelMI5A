@@ -34,6 +34,24 @@
             <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route(name: 'fakultas.index') }}">
+            <i class="mdi mdi-archive menu-icon"></i>
+            <span class="menu-title">Fakultas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route(name: 'prodi.index') }}">
+            <i class="mdi mdi-account-box-outline menu-icon"></i>
+            <span class="menu-title">Program Studi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route(name: 'mahasiswa.index') }}">
+            <i class="mdi mdi-account menu-icon"></i>
+            <span class="menu-title">Mahasiswa</span>
+          </a>
+        </li>
         <li class="nav-item sidebar-category">
           <p>Components</p>
           <span></span>
