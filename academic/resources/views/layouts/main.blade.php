@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Spica Admin</title>
   <!-- base:css -->
-  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="{{ url ('vendors/mdi/css/materialdesignicons.min.css')}}">
+  <link rel="stylesheet" href="{{ url ('vendors/css/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{{ url ('css/style.css')}}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="{{ url ('images/favicon.png')}}" />
 </head>
 <body>
   <div class="container-scroller d-flex">
@@ -315,7 +315,7 @@
   <!-- container-scroller -->
 
   <!-- base:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="{{ url ('vendors/js/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <script src="vendors/chart.js/Chart.min.js"></script>
@@ -330,6 +330,16 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
-</body>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @session('success')
+  <script>
+    Swal.fire({
+      title: "Goob job",
+      text : "{{ session('success')}}",
+      icon: "success"
+    });
+    </script>
+    
+    @endsession
+    </body>
 </html>
