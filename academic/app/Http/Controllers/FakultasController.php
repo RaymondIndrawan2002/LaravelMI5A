@@ -59,9 +59,12 @@ class FakultasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fakultas $fakultas)
+    public function edit($id)
     {
-        //
+        $fakultas = Fakultas::find($id);
+       // dd($fakultas);
+
+       return view('fakultas.edit')->with('fakultas',$fakultas);
     }
 
     /**

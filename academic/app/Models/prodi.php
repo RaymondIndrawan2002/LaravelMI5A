@@ -11,6 +11,8 @@ class prodi extends Model
 {
     use HasFactory, HasUlids;
 
+    protected $fillable = ["nama","kaprodi","singkatan","fakultas_id"];
+
     public function fakultas(): BelongsTo{
         return $this->belongsTo(related: Fakultas::class, foreignKey: 'fakultas_id', ownerKey: 'id');
     }

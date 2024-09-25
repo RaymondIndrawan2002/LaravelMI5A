@@ -1,7 +1,8 @@
 @extends( 'layouts.main')
 
 @section('content')
-        <h4>Prodi</h4>
+        <h4>Mahasiswa</h4>
+        <a href="{{ route('mahasiswa.create') }}" class=" btn btn-primary">Tambah</a>
         <table class="table table-striped">
                 <thead>
                         <tr>

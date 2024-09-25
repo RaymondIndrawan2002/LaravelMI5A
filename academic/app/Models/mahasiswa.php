@@ -10,6 +10,8 @@ class mahasiswa extends Model
 {
     use HasFactory, HasUlids;
 
+    protected $fillable = ["npm","nama","tanggal_lahir","tempat_lahir","email","hp","alamat","prodi_id"];
+
     public function mahasiswas(){
         return $this->belongsTo( mahasiswa::class,  'prodi_id',  'id');
     }
