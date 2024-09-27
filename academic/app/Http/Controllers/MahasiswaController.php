@@ -6,7 +6,7 @@ use App\Models\mahasiswa;
 use App\Models\prodi;
 use Illuminate\Http\Request;
 
-class MahasiswaController extends Controller
+class MahasiswaController extends Controller 
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class MahasiswaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+     public function store(Request $request)
     {
         //dd($request);
         $input = $request->validate([
