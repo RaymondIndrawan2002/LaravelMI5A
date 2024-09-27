@@ -43,7 +43,7 @@ class ProdiController extends Controller
         ]);
 
         // simpan
-        Prodi::created($input);
+        Prodi::create($input);
     }
 
     /**
@@ -57,17 +57,29 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(prodi $prodi)
+    public function edit($id)
     {
-        //
+        $prodi = prodi::find($id);
+        $fakultas = Fakultas::all();
+        return view('prodi.edit')
+                    ->with('prodi',$prodi)
+                    ->with('fakultas',$fakultas);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, prodi $prodi)
+    public function update(Request $request, $id)
     {
-        //
+        $prodi = prodi::find($id);
+
+        $input = $request->validate([
+            "nama" => "required|unique:prodis",
+            "kaprodi" => "required",
+            "singkatan" => "required",
+             "fakultas_id" => "required"
+        ]);
+
     }
 
     /**

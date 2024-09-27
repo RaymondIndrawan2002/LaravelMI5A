@@ -42,7 +42,7 @@ class FakultasController extends Controller
         ]);
 
         // simpan
-        Fakultas::created($input);
+        Fakultas::create($input);
 
         // redirect berserta pesan success
         return redirect()->route('fakultas.index')->with('success', $request->nama. 'berhasil disimpan');
@@ -70,9 +70,22 @@ class FakultasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, $id)
     {
-        //
+        $fakultas = fakultas::find($id);
+        //dd($fakultas);
+
+        $input = $request->validate([
+            "nama" => "required|unique:fakultas",
+            "dekan" => "required",
+            "singkatan" => "required"
+        ]);
+
+        Fakultas::updated($input);
+
+         // redirect berserta pesan success
+        return redirect()->route('fakultas.index')->with('success', $request->nama. 'berhasil diubah');
+
     }
 
     /**

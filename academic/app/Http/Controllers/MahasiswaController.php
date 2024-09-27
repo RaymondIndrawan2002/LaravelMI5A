@@ -47,7 +47,7 @@ class MahasiswaController extends Controller
         ]);
 
         // simpan
-        mahasiswa::created($input);
+        mahasiswa::create($input);
 
         // redirect berserta pesan success
         return redirect()->route('mahasiswa.index')->with('success', $request->nama. 'berhasil disimpan');
