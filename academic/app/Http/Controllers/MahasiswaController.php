@@ -37,10 +37,11 @@ class MahasiswaController extends Controller
     {
         //dd($request);
         $input = $request->validate([
-            "npm" => "required|unique:fakultas",
+            "npm" => "required|unique:mahasiswas",
             "nama" => "required",
             "tanggal_lahir" => "required",
              "tempat_lahir" => "required",
+             "email" => "required",
              "hp" => "required",
              "alamat" => "required",
              "prodi_id" => "required",

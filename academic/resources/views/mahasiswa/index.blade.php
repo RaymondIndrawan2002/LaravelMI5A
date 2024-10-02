@@ -19,8 +19,11 @@
                 <td>{{$row['npm']}}</td>
                 <td>{{$row['email']}}</td>
                 <td>{{$row['alamat']}}</td>
-                <td><a href="{{ route ('mahasiswa.show', $row['id'])  }}" 
-                class="btn btn-primary btn-xs">show</a><td>
+                <td>
+                        <a href="{{ route ('mahasiswa.show', $row['id'])  }}" 
+                class="btn btn-primary btn-xs">show</a>
+                
+                <td>
         </tr>
         </tr>
         @endforeach
