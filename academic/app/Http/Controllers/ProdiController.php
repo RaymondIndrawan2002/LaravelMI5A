@@ -44,6 +44,7 @@ class ProdiController extends Controller
 
         // simpan
         Prodi::create($input);
+        return redirect()->route('prodi.index')->with('success', $request->nama. 'berhasil disimpan');
     }
 
     /**

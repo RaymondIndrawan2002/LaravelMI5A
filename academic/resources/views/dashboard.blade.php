@@ -19,6 +19,17 @@
     </p>
 </figure>
 
+<figure class="highcharts-figure">
+    <div id="container2"></div>
+    <p class="highcharts-description">
+        A basic column chart comparing estimated corn and wheat production
+        in some countries.
+
+        The chart is making use of the axis crosshair feature, to highlight
+        the hovered country.
+    </p>
+</figure>
+
     {{--css--}}
     <style>
     .highcharts-figure,
@@ -69,6 +80,8 @@
 }
 </style>
 
+
+
 {{--JavaSptrict--}}
 
 <script>
@@ -89,6 +102,7 @@ Highcharts.chart('container', {
         categories: [
             @foreach($mahasiswa as $row)
                 '{{ $row->nama }}',
+                @endforeach
         ],
         crosshair: true,
         accessibility: {
@@ -113,7 +127,62 @@ Highcharts.chart('container', {
     series: [
         {
             name: 'Mahasiswa',
-            data: [3, 2]
+            data: [@foreach($mahasiswa as $row)
+                {{ $row->jumlah }},
+                @endforeach]
+        }
+    ]
+});
+</script>
+
+<script>
+Highcharts.chart('container2', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Perbandingan Jumlah Mahasiswa Program Studi',
+        align: 'left'
+    },
+    subtitle: {
+        text:
+            'Source: Academic App',
+        align: 'left'
+    },
+    xAxis: {
+        categories: [
+            @foreach($mahasiswa_tempatlahir as $row)
+                '{{ $row->tempat_lahir }}',
+                @endforeach
+        ],
+        crosshair: true,
+        accessibility: {
+            description: 'Program Studi'
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '1000 metric tons (MT)'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' (1000 MT)'
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [
+        {
+            name: 'Mahasiswa',
+            data: [
+                @foreach ($mahasiswa_tempatlahir as $row)
+                    {{$row->jumlah}},
+                @endforeach
+            ]
         }
     ]
 });
