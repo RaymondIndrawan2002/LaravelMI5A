@@ -127,4 +127,24 @@ class FakultasController extends Controller
             return response()->json($response, 400); // 400 Bad Request
         }
     }
+
+    public function destroyFakultas($id)
+    {
+        $fakultas = Fakultas::find($id);
+        //dd(vars: $fakultas);
+        $fakultas->delete();
+        return redirect()->route('fakultas.index')->with('success', 'Data fakultas berhasil dihapus');
+
+        // hapus
+        $hasil = $Fakultas->delete();
+        if($hasil){ // jika data berhasil disimpan
+            $response['success'] = true;
+            $response['message'] = $request->nama." berhasil dihapus";
+            return response()->json($response, 201); // 201 Created
+        } else {
+            $response['success'] = false;
+            $response['message'] = $request->nama." gagal dihapus";
+            return response()->json($response, 400); // 400 Bad Request
+        }
+    }
 }
