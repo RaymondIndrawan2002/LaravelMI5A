@@ -13,7 +13,11 @@ class AuthContoller extends Controller
         'password' => $request->password
     ])) {
         $user = Auth::user();
-        $success['token'] = $user->createToken('MDPApp')->plainTextToken;
+        if($user->role == 'admin'){
+             $success['token'] = $user->createToken('MDPApp',['create','read','update','delete'])->plainTextToken;
+        } else {
+            $success['token'] = $user->createToken('MDPApp',['read'])->plainTextToken;
+        }
         $success['name'] = $user->name;
         return response()->json($success, 201);
     } else {
