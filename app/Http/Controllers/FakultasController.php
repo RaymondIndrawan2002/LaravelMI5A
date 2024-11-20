@@ -72,7 +72,7 @@ class FakultasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fakultas = fakultas::find($id);
+        $fakultas = Fakultas::find($id);
         //dd($fakultas);
 
         $input = $request->validate([
@@ -81,7 +81,7 @@ class FakultasController extends Controller
             "singkatan" => "required"
         ]);
 
-        Fakultas::updated($input);
+        $fakultas->update($input);
 
          // redirect berserta pesan success
         return redirect()->route('fakultas.index')->with('success', $request->nama. 'berhasil diubah');
@@ -132,19 +132,43 @@ class FakultasController extends Controller
     {
         $fakultas = Fakultas::find($id);
         //dd(vars: $fakultas);
-        $fakultas->delete();
-        return redirect()->route('fakultas.index')->with('success', 'Data fakultas berhasil dihapus');
-
+        
         // hapus
-        $hasil = $Fakultas->delete();
+        $hasil = $fakultas->delete();
         if($hasil){ // jika data berhasil disimpan
             $response['success'] = true;
-            $response['message'] = $request->nama." berhasil dihapus";
+            $response['message'] ="fakultas berhasil dihapus";
             return response()->json($response, 201); // 201 Created
         } else {
             $response['success'] = false;
-            $response['message'] = $request->nama." gagal dihapus";
+            $response['message'] ="fakultas gagal dihapus";
             return response()->json($response, 400); // 400 Bad Request
         }
+    }
+
+    public function updateFakultas(Request $request, $id)
+    {
+        $fakultas = Fakultas::find($id);
+        //dd($fakultas);
+
+        $input = $request->validate([
+            "nama" => "required|unique:fakultas",
+            "dekan" => "required",
+            "singkatan" => "required"
+        ]);
+
+        $hasil = $fakultas->update($input);
+
+        
+        if($hasil){ // jika data berhasil disimpan
+            $response['success'] = true;
+            $response['message'] = $request->nama." berhasil diubah";
+            return response()->json($response, 201); // 201 Created
+        } else {
+            $response['success'] = false;
+            $response['message'] = $request->nama." gagal diubah";
+            return response()->json($response, 400); // 400 Bad Request
+        }
+
     }
 }

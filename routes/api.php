@@ -27,3 +27,6 @@ Route::post('prodi', [ProdiController::class, 'storeProdi']);
 Route::delete('fakultas/{id}',[FakultasController::class,'destroyFakultas']);
 
 Route::post('login', [AuthContoller::class, 'login']);
+
+Route::put('fakultas/{id}',[FakultasController::class,'updateFakultas'])->Middleware(['auth:sanctum','ability:update']);
+
